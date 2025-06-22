@@ -1,0 +1,72 @@
+services:
+  init-sql-perms:
+    image: alpine
+    command: >
+      sh -c "
+        chown -R 10001:0 /data &&
+        chown -R 10001:0 /log &&
+        chown -R 10001:0 /secrets
+      "
+    volumes:
+      - sqlserver_data:/data
+      - sqlserver_log:/log
+      - sqlserver_secrets:/secrets
+    restart: 'no'
+
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    container_name: sqlserver
+    depends_on:
+      - init-sql-perms
+    restart: unless-stopped
+    ports:
+      - "14330:1433"
+    environment:
+      - ACCEPT_EULA=Y
+      - MSSQL_SA_PASSWORD=Sanduba@2025
+      - TZ=America/Sao_Paulo
+    volumes:
+      - sqlserver_data:/var/opt/mssql/data
+      - sqlserver_log:/var/opt/mssql/log
+      - sqlserver_secrets:/var/opt/mssql/secrets
+    networks:
+      - app-network
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq
+    restart: unless-stopped
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq
+      - ./rabbitmq-plugins.conf:/etc/rabbitmq/enabled_plugins:ro
+    networks:
+      - app-network
+
+  mailhog:
+    image: mailhog/mailhog
+    container_name: mailhog
+    restart: unless-stopped
+    environment:
+      - MH_STORAGE=maildir
+      - MH_MAILDIR_PATH=/maildir
+    ports:
+      - "1025:1025"
+      - "8025:8025"
+    volumes:
+      - mailhog_data:/maildir
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  sqlserver_data:
+  sqlserver_log:
+  sqlserver_secrets:
+  rabbitmq_data:
+  mailhog_data:

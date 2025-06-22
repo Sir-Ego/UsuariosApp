@@ -1,0 +1,27 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+	<PropertyGroup>
+		<TargetFramework>net9.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.5" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.6">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="Swashbuckle.AspNetCore" Version="9.0.1" />
+		<PackageReference Include="Swashbuckle.AspNetCore.Filters" Version="9.0.0" />
+		<PackageReference Include="System.Net.Http" Version="4.3.4" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\UsuarioApp.Domain\UsuariosApp.Domain.csproj" />
+		<ProjectReference Include="..\UsuariosApp.Application\UsuariosApp.Application.csproj" />
+		<ProjectReference Include="..\UsuariosApp.InfraStructure\UsuariosApp.InfraStructure.csproj" />
+		<ProjectReference Include="..\UsuariosApp.Settings\UsuariosApp.Settings.csproj" />
+	</ItemGroup>
+
+</Project>

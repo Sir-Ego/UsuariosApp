@@ -1,0 +1,31 @@
+# Build artifacts
+bin/
+obj/
+out/
+TestResults/
+
+# Rider & VSCode & VS
+.vscode/
+.idea/
+.vs/
+*.user
+*.suo
+
+# Logs
+*.log
+
+# Docker
+*.env
+docker-compose.override.yml
+
+# EF/SQL Server (caso use local)
+*.mdf
+*.ldf
+
+# User secrets
+secrets.json
+
+# Others
+*.db
+*.pdb
+*.cache
