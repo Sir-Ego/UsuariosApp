@@ -93,7 +93,7 @@ Todos são bem-vindos para contribuir, testar ou sugerir melhorias.
 
     ```yaml
   environment:
-  MSSQL_SA_PASSWORD = ${SA_PASSWORD}
+  MSSQL_SA_PASSWORD=${SA_PASSWORD}
   ```
    
 
@@ -103,7 +103,7 @@ Todos são bem-vindos para contribuir, testar ou sugerir melhorias.
 - Adicione as seguintes informações:
 
      ````env
-     SA_PASSWORD = SuaSenhaAqui123!
+     SA_PASSWORD=SuaSenhaAqui123!
      ````
 
 ☑️ Assim, `SA_PASSWORD` conterá o valor definido por você, no arquivo `.env`.  
