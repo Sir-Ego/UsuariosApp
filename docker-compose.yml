@@ -23,7 +23,7 @@ services:
       - "14330:1433"
     environment:
       - ACCEPT_EULA=Y
-      - MSSQL_SA_PASSWORD=Sanduba@2025
+      - MSSQL_SA_PASSWORD = ${SA_PASSWORD}
       - TZ=America/Sao_Paulo
     volumes:
       - sqlserver_data:/var/opt/mssql/data

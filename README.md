@@ -52,7 +52,7 @@ A aplicação pode ser executada **localmente** em sua máquina, utilizando:
 - **Próximos passos**:
   - ✅ Integração com RabbitMQ (mensageria)
   - ✅ Desacoplamento de autenticação para outro microserviço
-  - ⏳ Integração com outros bancos dee dados em outras aplicaçôes
+  - ⏳ Integração com outros bancos de dados em outras aplicaçôes
 
 ---
 
@@ -69,20 +69,56 @@ Todos são bem-vindos para contribuir, testar ou sugerir melhorias.
 - [.NET 8 SDK ou superior](https://dotnet.microsoft.com/download)
 - [Docker](https://www.docker.com/products/docker-desktop)
 - Editor de código (como [Visual Studio 2022](https://visualstudio.microsoft.com/pt-br/) ou [Visual Studio Code](https://code.visualstudio.com/))
-
 ---
 
-### 🐳 Subindo os containers (SQL Server, RabbitMQ e Mailhog)
+## ⚠️ Para rodar esta aplicação localmente:
+---
+
+### 📛 **Atenção - Segurança em ambientes reais**
+---
+
+- As credenciais (`Usuário: sa`, `Senha: MinhaSenha@2025`, `Database: master`) estão sendo demonstradas, neste projeto apenas para fins **educacionais e de testes locais**.
+---
+
+### ❌ **Nunca exponha senhas diretamente em arquivos como:
+---
+
+- `README.md` ou `docker-compose.yml`** em ambientes reais (produção ou projetos privados).
+
+- Em projetos sérios, utilize **variáveis de ambiente** e arquivos `.env` para armazenar informações sensíveis.
+---
+### Exemplo de uso seguro: 
+
+- No `docker-compose.yml`, faça:
+
+    ```yaml
+  environment:
+  MSSQL_SA_PASSWORD = ${SA_PASSWORD}
+  ```
+   
+
+
+- Na raiz do projeto (Solução),
+- Crie um arquivo `.env`.
+- Adicione as seguintes informações:
+
+     ````env
+     SA_PASSWORD = SuaSenhaAqui123!
+     ````
+
+☑️ Assim, `SA_PASSWORD` conterá o valor definido por você, no arquivo `.env`.  
+
+
+🔔 O arquivo `.env` **não deve ser versionado**!!! Ou seja, ele tem de ser acrescentado no .gitignore.
+
+---
+## 🐳 Subindo os containers (SQL Server, RabbitMQ e Mailhog)
+
+No diretório onde se encontra o arquivo `docker-compose.yml`, abra um terminal de sua preferência (como **CMD**, **PowerShell**, **Git Bash** ou outro compatível com Docker) e execute o seguinte comando:
 
 ```bash
 docker-compose up -d
 ```
-
-> Execute este comando no terminal (o container usará SQL Server com credenciais fixas):
-- **Usuário:** `sa`
-- **Senha:** `Sanduba@2025`
-- **Database:** `master`
-
 ---
 
 ### ▶️ Executando o projeto
@@ -93,13 +129,13 @@ Navegue até a pasta `src/API/` e rode o seguinte comando:
 dotnet run
 ```
 
-Acesse o Swagger em:
+---
+
+### 🔌 Acesse o Swagger em:
 
 ```
 https://localhost:5009/swagger
 ```
-
----
 
 ### ✅ Endpoints disponíveis
 
@@ -110,9 +146,7 @@ https://localhost:5009/swagger
 | GET    | /api/usuarios/consultartodos  | Listar todos os usuários |
 | PUT    | /api/usuarios/atualizarconta/{id}  | Atualizar um usuário com base no Id |
 | DELETE | /api/usuarios/deletar/{id}  | Remover um usuário |
-
 ---
-
 ## 🧪 Testes Automatizados
 
 A aplicação foi testada com o framework **xUnit**, cobrindo:
@@ -133,6 +167,9 @@ Para executar os testes:
 dotnet test
 ```
 
+---
+
+
 ## 📦 Serviços de Infraestrutura no Docker
 
 Este projeto inclui no docker-compose.yml os seguintes serviços:
@@ -142,6 +179,7 @@ Este projeto inclui no docker-compose.yml os seguintes serviços:
 - 🐇 RabbitMQ com painel em http://localhost:15672 (usuário: guest, senha: guest)
 
 - ✉️ Mailhog (teste de envio de e-mails) em http://localhost:8025
+
 ---
 
 ## 📝 Licença
