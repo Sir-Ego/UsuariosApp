@@ -40,8 +40,9 @@ namespace UsuariosApp.InfraStructure.Mappings
             builder.Property(u => u.Permissao)
                 .HasColumnName("PERMISSAO")
                 .IsRequired()
-                .HasConversion<int>(); 
+                .HasConversion<int>();
 
+           
         }
     }
 

@@ -12,7 +12,7 @@ using UsuariosApp.InfraStructure.Context;
 namespace UsuariosApp.InfraStructure.Migrations
 {
     [DbContext(typeof(UsuarioDbContext))]
-    [Migration("20250617031407_Initial")]
+    [Migration("20250622232457_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
