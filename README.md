@@ -129,7 +129,7 @@ Em seguida, escolher a opção: "**Console do Gerenciador de Pacotes**"
 Ao abrir o console, na parte superior, certifique-se de que a dropdow **Projeto padrão**: Seja o `UsuariosApp.InfraStructure` 
 Além disso, certifique-se que o **projeto de inicialização** seja o `UsuariosApp.API`.
 
-🔦 ~Dica: O projeto de inicialização se destaca por apresentar um tom de cor mais forte que os outros projetos.~
+🔦 **Dica:** O projeto de inicialização se destaca por apresentar um tom de cor mais forte que os outros projetos.
 
 Após isso, execute os seguintes comandos:
 
