@@ -121,7 +121,33 @@ docker-compose up -d
 ```
 ---
 
-### ▶️ Executando o projeto
+## 🛠️ Rodar migrations para criar banco do zero
+
+No VisualStudio, na guia "Ferramentas", escolher a opção "Gerenciador de Pacotes Nugets". 
+Em seguida, escolher a opção: "**Console do Gerenciador de Pacotes**"
+
+Ao abrir o console, na parte superior, certifique-se de que a dropdow **Projeto padrão**: Seja o `UsuariosApp.InfraStructure` 
+Além disso, certifique-se que o **projeto de inicialização** seja o `UsuariosApp.API`.
+
+🔦 ~Dica: O projeto de inicialização se destaca por apresentar um tom de cor mais forte que os outros projetos.~
+
+Após isso, execute os seguintes comandos:
+
+```bash
+Add-Migration Initial -Project UsuariosApp.InfraStructure -StartupProject UsuariosApp.API
+```
+
+```bash
+Update-Database -Project UsuariosApp.InfraStructure -StartupProject UsuariosApp.API
+```
+
+⚠️ O primeiro comando (Add-Migration) só é necessário se você precisar criar ou atualizar migrations.
+Para aplicar migrations existentes, apenas o segundo comando (dotnet ef database update) é suficiente.
+
+--- **Observação**: Se você já tiver um banco de dados existente, pode pular esta etapa.
+
+---
+## ▶️ Executando o projeto
 
 Navegue até a pasta `src/API/` e rode o seguinte comando:
 

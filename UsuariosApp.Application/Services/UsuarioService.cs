@@ -64,7 +64,8 @@ namespace UsuariosApp.Application.Services
                 Id = usuario.Id,
                 Nome = usuario.Nome,
                 Email = usuario.Email,
-                Permissao = usuario.Permissao.ToString()
+                Permissao = usuario.Permissao.ToString(),
+                DataCriacao = usuario.DataCriacao
             };
 
         }

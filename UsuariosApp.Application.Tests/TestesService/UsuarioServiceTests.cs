@@ -66,6 +66,7 @@ namespace UsuariosApp.Application.Tests.TestesService
             result.Nome.Should().Be(usuarioRequestDto.Nome);
             result.Email.Should().Be(usuarioRequestDto.Email);
             result.Permissao.Should().Be(usuarioRequestDto.Permissao.ToString());
+            result.DataCriacao.Should().BeCloseTo(DateTime.UtcNow, TimeSpan.FromSeconds(5));
         }
 
         [Fact]

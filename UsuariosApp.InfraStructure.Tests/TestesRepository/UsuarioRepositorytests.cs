@@ -58,6 +58,7 @@ namespace UsuariosApp.InfraStructure.Tests.TestesRepository
             usuarioBanco!.Nome.Should().Be(usuarioRequestDto.Nome);
             usuarioBanco.Email.Should().Be(usuarioRequestDto.Email);
             usuarioBanco.Permissao.Should().Be(usuarioRequestDto.Permissao);
+            usuarioBanco.DataCriacao.Should().BeCloseTo(DateTime.UtcNow, TimeSpan.FromSeconds(5));
 
             result.Should().Be(usuario);
         }
